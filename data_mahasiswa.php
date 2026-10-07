@@ -1,12 +1,8 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "web_programming_1");
-if ($conn->connect_error) {
- die("Koneksi gagal: " . $conn->connect_error);
-}
-$conn->set_charset("utf8mb4");
+require "koneksi.php";
 $sql = "SELECT id, nim, nama, program_studi, email
  FROM mahasiswa
- ORDER BY id ASC";
+ ORDER BY id DESC";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -18,50 +14,46 @@ $result = $conn->query($sql);
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="identitas" style="text-align: center; padding: 20px;">
+<header>
  <h1>Data Mahasiswa</h1>
- <p>Web Programming 1</p>
 </header>
 <nav>
  <a href="index.html">Biodata</a>
  <a href="layout.html">Layout Lab</a>
  <a href="data_mahasiswa.php">Data Mahasiswa</a>
+ <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
 </nav>
 <main>
  <section>
  <h2>Daftar Mahasiswa</h2>
+ <?php if (isset($_GET["status"]) && $_GET["status"] === "sukses"): ?>
+ <p>Data berhasil ditambahkan.</p>
+ <?php endif; ?>
  <table class="data-table">
- <caption>Data Mahasiswa dari MySQL</caption>
  <thead>
  <tr>
- <th scope="col">No</th>
- <th scope="col">NIM</th>
- <th scope="col">Nama</th>
- <th scope="col">Program Studi</th>
- <th scope="col">Email</th>
+ <th>No</th>
+<th>NIM</th>
+<th>Nama</th>
+<th>Program Studi</th>
+<th>Email</th>
  </tr>
  </thead>
  <tbody>
- <?php
-
- $no = 1;
- while ($row = $result->fetch_assoc()) {
- ?>
+ <?php $no = 1; ?>
+ <?php while ($row = $result->fetch_assoc()): ?>
  <tr>
- <td><?php echo $no; ?></td>
- <td><?php echo htmlspecialchars($row["nim"]); ?></td>
- <td><?php echo htmlspecialchars($row["nama"]); ?></td>
- <td><?php echo htmlspecialchars($row["program_studi"]); ?></td>
- <td><?php echo htmlspecialchars($row["email"]); ?></td>
+ <td><?= $no++; ?></td>
+<td><?= htmlspecialchars($row["nim"]); ?></td>
+<td><?= htmlspecialchars($row["nama"]); ?></td>
+<td><?= htmlspecialchars($row["program_studi"]); ?></td>
+<td><?= htmlspecialchars($row["email"]); ?></td>
  </tr>
- <?php
- $no++;
- }
- ?>
+ <?php endwhile; ?>
  </tbody>
  </table>
  </section>
-</main>
+ </main>
 <footer>
  <p>Web Programming 1</p>
 </footer>
