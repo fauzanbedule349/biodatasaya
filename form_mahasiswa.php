@@ -4,23 +4,23 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Tambah Mahasiswa</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style2.css">
 </head>
 <body>
 <header>
- <h1>Tambah Mahasiswa</h1>
+ <h1 class="form">Tambah Mahasiswa</h1>
  <p>Web Programming 1</p>
 </header>
 <nav>
  <a href="index.html">Biodata</a>
- <a href="layout.html">Layout Lab</a>
+ <a href="layout.html">Layout Experiment</a>
  <a href="data_mahasiswa.php">Data Mahasiswa</a>
  <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
 </nav>
 <main>
  <section>
  <h2>Form Data Mahasiswa</h2>
- <form action="proses_tambah.php" method="POST" class="student-form">
+ <form action="proses_tambah.php" method="POST" class="student-form1">
  <label for="nim">NIM</label>
  <input id="nim" name="nim" type="text" required>
  <label for="nama">Nama</label>
@@ -37,4 +37,3 @@
  <p>Web Programming 1</p>
 </footer>
 </body>
-</html>
