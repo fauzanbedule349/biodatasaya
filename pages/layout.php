@@ -182,7 +182,9 @@ require_once "../config/auth.php";
             <a href="layout.php" class="active">Layout Lab</a>
             <a href="data_mahasiswa.php">Data Mahasiswa</a>
             <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
-            <a href="logout.php">Logout</a>
+             <a href="../crud/index.php">CRUD Mahasiswa</a>
+             <a href="../crud-media/index.php">CRUD Media</a>
+        <a href="../proses/logout.php">Logout</a>
         </nav>
     </aside>
 

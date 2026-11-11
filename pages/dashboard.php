@@ -107,6 +107,7 @@ require_once "../config/auth.php";
         <a href="data_mahasiswa.php">Data Mahasiswa</a>
         <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
         <a href="../crud/index.php">CRUD Mahasiswa</a>
+        <a href="../crud-media/index.php">CRUD Media</a>
         <a href="../proses/logout.php">Logout</a>
     </aside>
 

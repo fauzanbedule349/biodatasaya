@@ -452,6 +452,50 @@ footer p {
  width: 100%;
  }
 }
+
+.table-scroll {
+ overflow-x: auto;
+}
+.table-photo {
+ width: 72px;
+ height: 72px;
+ object-fit: cover;
+ border-radius: 8px;
+}
+.table-audio {
+ width: 210px;
+}
+.media-preview-box {
+ margin: 10px 0 18px;
+ padding: 12px;
+ border: 1px dashed #999;
+ border-radius: 8px;
+}
+.media-preview-image {
+ display: block;
+ width: 180px;
+ max-height: 180px;
+ object-fit: cover;
+ border-radius: 8px;
+ margin-top: 8px;
+}
+.media-preview-audio {
+ display: block;
+ width: min(100%, 420px);
+ margin-top: 8px;
+}
+.current-media {
+ margin: 8px 0 14px;
+ padding: 10px;
+ background: #f5f5f5;
+ border-radius: 8px;
+}
+.file-hint {
+ display: block;
+ margin-top: 4px;
+ color: #666;
+ font-size: 0.9rem;
+}
 /* =========================
    RESPONSIVE / HP
    ========================= */
