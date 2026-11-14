@@ -7,242 +7,237 @@ require_once "../config/auth.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Tambah Mahasiswa - Web Programming 1</title>
-    <link rel="stylesheet" href="style2.css">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #eef1f5;
-            color: #333;
-        }
-
-        .page-layout {
-            display: grid;
-            grid-template-columns: 240px minmax(0, 1fr);
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: #222;
-            color: white;
-            padding: 25px 18px;
-        }
-
-        .sidebar h2 {
-            margin: 0 0 8px;
-            font-size: 22px;
-            color: white;
-        }
-
-        .sidebar p {
-            margin-bottom: 30px;
-            font-size: 13px;
-            color: #ccc;
-        }
-
-        .sidebar nav {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background: #333;
-        }
-
-        .sidebar nav a {
-            display: block;
-            padding: 12px 15px;
-            border-radius: 8px;
-            color: #eee;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .sidebar nav a:hover,
-        .sidebar nav a.active {
-            background: #444;
-            color: white;
-        }
-
-        /* Main Content */
-        .main-content {
-            min-width: 0;
-            padding: 30px;
-        }
-
-        .page-header {
-            background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-        }
-
-        .page-header h1 {
-            margin: 0 0 8px;
-            font-size: 28px;
-        }
-
-        .page-header p {
-            margin: 0;
-            color: #777;
-        }
-
-        .content-card {
-            background: white;
-            padding: 25px;
-            border: 1px solid #ddd;
-            border-radius: 15px;
-        }
-
-        .content-card h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        /* Form */
-        .student-form1 {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 600px;
-        }
-
-        .student-form1 label {
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        .student-form1 input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-            background: #fff;
-            color: #333;
-        }
-
-        .student-form1 input:focus {
-            outline: none;
-            border-color: #555;
-        }
-
-        .student-form1 button {
-            margin-top: 15px;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: #222;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .student-form1 button:hover {
-            background: #444;
-        }
-
-        /* Footer */
-        .page-footer {
-            margin-top: 25px;
-            padding: 18px;
-            background: #222;
-            color: white;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .page-footer p {
-            margin: 5px;
-        }
-
-        /* Responsive */
-        @media (max-width: 700px) {
-            .page-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                padding: 20px;
-            }
-
-            .sidebar nav {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .main-content {
-                padding: 15px;
-            }
-
-            .page-header,
-            .content-card {
-                padding: 20px;
+    <!-- Tailwind CSS -->
+    <script>
+        tailwind = {
+            config: {
+                corePlugins: {
+                    preflight: false
+                }
             }
         }
-    </style>
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
-<body>
-<div class="page-layout">
+<body class="bg-gray-100 text-gray-800">
 
-    <aside class="sidebar">
-        <h2>My Dashboard</h2>
-        <p>Web Programming 1</p>
+<div class="container-fluid">
+    <div class="row min-vh-100">
 
-        <nav>
-            <a href="dashboard.php">Dashboard</a>
-            <a href="index.php">Home / Biodata</a>
-            <a href="layout.php">Layout Lab</a>
-            <a href="data_mahasiswa.php">Data Mahasiswa</a>
-            <a href="form_mahasiswa.php" class="active">Tambah Mahasiswa</a>
-             <a href="../crud/index.php">CRUD Mahasiswa</a>
-             <a href="../crud-media/index.php">CRUD Media</a>
-        <a href="../proses/logout.php">Logout</a>
-        </nav>
-    </aside>
+        <!-- SIDEBAR -->
+        <aside class="col-lg-3 col-xl-2 bg-dark text-white p-4">
 
-    <div class="main-content">
+            <h2 class="text-2xl font-bold mb-2">
+                My Dashboard
+            </h2>
 
-        <header class="page-header">
-            <h1>Tambah Mahasiswa</h1>
-            <p>Web Programming 1</p>
-        </header>
+            <p class="text-gray-400 text-sm mb-4">
+                Web Programming 1
+            </p>
 
-        <main>
-            <section class="content-card">
-                <h2>Form Data Mahasiswa</h2>
+            <hr class="border-secondary">
 
-                <form action="proses_tambah.php" method="POST" class="student-form1">
-                    <label for="nim">NIM</label>
-                    <input id="nim" name="nim" type="text" required>
+            <nav class="grid grid-cols-2 lg:grid-cols-1 gap-2 mt-4">
 
-                    <label for="nama">Nama</label>
-                    <input id="nama" name="nama" type="text" required>
+                <a href="dashboard.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Dashboard
+                </a>
 
-                    <label for="program_studi">Program Studi</label>
-                    <input id="program_studi" name="program_studi" type="text" required>
+                <a href="index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Home / Biodata
+                </a>
 
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required>
+                <a href="layout.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Layout Lab
+                </a>
 
-                    <button type="submit">Simpan Data</button>
+                <a href="data_mahasiswa.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Data Mahasiswa
+                </a>
+
+                <a href="form_mahasiswa.php"
+                   class="bg-gray-700 text-white no-underline rounded-lg p-3">
+                    Tambah Mahasiswa
+                </a>
+
+                <a href="../crud/index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    CRUD Mahasiswa
+                </a>
+
+                <a href="../crud-media/index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    CRUD Media
+                </a>
+
+                <a href="../proses/logout.php"
+                   class="text-red-300 no-underline rounded-lg p-3 hover:bg-red-900 transition">
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- KONTEN UTAMA -->
+        <main class="col-lg-9 col-xl-10 p-3 p-md-4 p-lg-5">
+
+            <!-- HEADER -->
+            <header class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                    Tambah Mahasiswa
+                </h1>
+
+                <p class="text-gray-500 mb-0">
+                    Web Programming 1
+                </p>
+
+            </header>
+
+
+            <!-- FORM DATA MAHASISWA -->
+            <section class="card border-0 shadow-sm rounded-4 p-3 p-md-4">
+
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                    Form Data Mahasiswa
+                </h2>
+
+                <p class="text-gray-500 mb-4">
+                    Silakan isi informasi mahasiswa dengan lengkap.
+                </p>
+
+                <form action="proses_tambah.php" method="POST">
+
+                    <!-- NIM -->
+                    <div class="mb-3">
+
+                        <label for="nim" class="form-label fw-semibold">
+                            NIM
+                        </label>
+
+                        <input
+                            id="nim"
+                            name="nim"
+                            type="text"
+                            class="form-control rounded-3 p-3"
+                            placeholder="Masukkan NIM"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- NAMA -->
+                    <div class="mb-3">
+
+                        <label for="nama" class="form-label fw-semibold">
+                            Nama
+                        </label>
+
+                        <input
+                            id="nama"
+                            name="nama"
+                            type="text"
+                            class="form-control rounded-3 p-3"
+                            placeholder="Masukkan nama mahasiswa"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PROGRAM STUDI -->
+                    <div class="mb-3">
+
+                        <label for="program_studi" class="form-label fw-semibold">
+                            Program Studi
+                        </label>
+
+                        <input
+                            id="program_studi"
+                            name="program_studi"
+                            type="text"
+                            class="form-control rounded-3 p-3"
+                            placeholder="Masukkan program studi"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="mb-4">
+
+                        <label for="email" class="form-label fw-semibold">
+                            Email
+                        </label>
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            class="form-control rounded-3 p-3"
+                            placeholder="contoh@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+                    <div class="d-flex flex-wrap gap-2">
+
+                        <button type="submit" class="btn btn-dark px-4 py-2">
+                            Simpan Data
+                        </button>
+
+                        <a href="data_mahasiswa.php"
+                           class="btn btn-outline-secondary px-4 py-2">
+                            Kembali
+                        </a>
+
+                    </div>
+
                 </form>
-            </section>
-        </main>
 
-        <footer class="page-footer">
-            <p>Web Programming 1</p>
-            <p>&copy; 2026 Muhammad Fauzan</p>
-        </footer>
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="bg-dark text-white text-center rounded-3 p-4 mt-4">
+
+                <p class="mb-1">
+                    Web Programming 1
+                </p>
+
+                <p class="text-gray-400 text-sm mb-0">
+                    &copy; 2026 Muhammad Fauzan
+                </p>
+
+            </footer>
+
+        </main>
 
     </div>
 </div>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

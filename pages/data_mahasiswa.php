@@ -1,6 +1,4 @@
 
-
-
 <?php
 require_once "../config/auth.php";
 require "../config/koneksi.php";
@@ -11,296 +9,229 @@ $sql = "SELECT id, nim, nama, program_studi, email
 
 $result = $conn->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Data Mahasiswa</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    body {
-        margin: 0;
-        background: #eef1f5;
-        color: #333;
-        font-family: Arial, sans-serif;
-    }
-
-    /* Layout utama menggunakan CSS Grid */
-    .page-layout {
-        display: grid;
-        grid-template-columns: 240px minmax(0, 1fr);
-        min-height: 100vh;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        background: #222;
-        color: white;
-        padding: 25px 18px;
-    }
-
-    .sidebar h2 {
-        font-size: 22px;
-        margin: 0 0 8px;
-        color: white;
-    }
-
-    .sidebar p {
-        font-size: 13px;
-        color: #ccc;
-        margin-bottom: 30px;
-    }
-
-    .sidebar nav {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin: 0;
-        text-align: left;
-    }
-
-    .sidebar nav a {
-        display: block;
-        padding: 12px 15px;
-        color: #eee;
-        background: transparent;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: 0.3s;
-    }
-
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-        background: #444;
-        color: white;
-    }
-
-    /* Konten utama */
-    .main-content {
-        min-width: 0;
-        padding: 30px;
-    }
-
-    .page-header {
-        margin-bottom: 25px;
-    }
-
-    .page-header h1 {
-        margin: 0 0 8px;
-        color: #333;
-    }
-
-    .content-card {
-        background: #fff;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .content-card h2 {
-        color: #333;
-    }
-
-    /* Pesan sukses */
-    .success-message {
-        background: #f0f1f3;
-        color: #333;
-        padding: 12px 15px;
-        border-left: 4px solid #333;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
-
-    /* Tabel mahasiswa */
-    .table-wrapper {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .data-table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 600px;
-        background: #fff;
-        margin-top: 16px;
-    }
-
-    .data-table th,
-    .data-table td {
-        padding: 12px;
-        text-align: left;
-        border: 1px solid #ccc;
-    }
-
-    .data-table th {
-        background: #eee;
-        color: #333;
-    }
-
-    .data-table tbody tr {
-        background: #fff;
-        transition: background 0.2s;
-    }
-
-    .data-table tbody tr:hover {
-        background: #f4f5f7;
-    }
-
-    .empty-message {
-        text-align: center;
-        padding: 25px;
-        color: #777;
-    }
-
-    /* Footer */
-    .page-footer {
-        text-align: center;
-        background: #222;
-        color: white;
-        padding: 20px;
-        margin-top: 30px;
-        border-radius: 10px;
-    }
-
-    .page-footer p {
-        margin: 5px;
-    }
-
-    /* Tampilan HP */
-    @media (max-width: 700px) {
-        .page-layout {
-            grid-template-columns: 1fr;
+    <!-- Tailwind CSS -->
+    <script>
+        tailwind = {
+            config: {
+                corePlugins: {
+                    preflight: false
+                }
+            }
         }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        .sidebar {
-            padding: 20px;
-        }
-
-        .sidebar nav {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .main-content {
-            padding: 15px;
-        }
-
-        .content-card {
-            padding: 15px;
-        }
-    }
-</style>
-
-    
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-<div class="page-layout">
+<div class="container-fluid">
+    <div class="row min-vh-100">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h2>My Dashboard</h2>
-        <p>Web Programming 1</p>
+        <!-- SIDEBAR -->
+        <aside class="col-lg-3 col-xl-2 bg-dark text-white p-4">
 
-        <nav>
-            <a href="dashboard.php">Dashboard</a>
-            <a href="index.php">Home / Biodata</a>
-            <a href="layout.php">Layout Lab</a>
-            <a href="data_mahasiswa.php" class="active">
-                Data Mahasiswa</a>
-            <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
-             <a href="../crud/index.php">CRUD Mahasiswa</a>
-             <a href="../crud-media/index.php">CRUD Media</a>
-        <a href="../proses/logout.php">Logout</a>
-        </nav>
-    </aside>
+            <h2 class="text-2xl font-bold mb-2">
+                My Dashboard
+            </h2>
 
-    <!-- KONTEN UTAMA -->
-    <div class="main-content">
+            <p class="text-gray-400 text-sm mb-4">
+                Web Programming 1
+            </p>
 
-        <header class="page-header">
-            <h1>Data Mahasiswa</h1>
-            <p>Daftar mahasiswa yang tersimpan di database.</p>
-        </header>
+            <hr class="border-secondary">
 
-        <main>
-            <section class="content-card">
-                <h2>Daftar Mahasiswa</h2>
+            <nav class="grid grid-cols-2 lg:grid-cols-1 gap-2 mt-4">
 
+                <a href="dashboard.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Dashboard
+                </a>
+
+                <a href="index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Home / Biodata
+                </a>
+
+                <a href="layout.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Layout Lab
+                </a>
+
+                <a href="data_mahasiswa.php"
+                   class="bg-gray-700 text-white no-underline rounded-lg p-3">
+                    Data Mahasiswa
+                </a>
+
+                <a href="form_mahasiswa.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    Tambah Mahasiswa
+                </a>
+
+                <a href="../crud/index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    CRUD Mahasiswa
+                </a>
+
+                <a href="../crud-media/index.php"
+                   class="text-gray-200 no-underline rounded-lg p-3 hover:bg-gray-700 transition">
+                    CRUD Media
+                </a>
+
+                <a href="../proses/logout.php"
+                   class="text-red-300 no-underline rounded-lg p-3 hover:bg-red-900 transition">
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- KONTEN UTAMA -->
+        <main class="col-lg-9 col-xl-10 p-3 p-md-4 p-lg-5">
+
+            <!-- HEADER -->
+            <header class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                    Data Mahasiswa
+                </h1>
+
+                <p class="text-gray-500 mb-0">
+                    Daftar mahasiswa yang tersimpan di database.
+                </p>
+
+            </header>
+
+            <!-- DAFTAR MAHASISWA -->
+            <section class="card border-0 shadow-sm rounded-4 p-3 p-md-4">
+
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+
+                    <h2 class="text-2xl font-bold text-gray-900 mb-0">
+                        Daftar Mahasiswa
+                    </h2>
+
+                    <a href="form_mahasiswa.php"
+                       class="btn btn-dark">
+                        + Tambah Mahasiswa
+                    </a>
+
+                </div>
+
+                <!-- PESAN SUKSES -->
                 <?php if (
                     isset($_GET["status"]) &&
                     $_GET["status"] === "sukses"
                 ): ?>
-                    <p class="success-message">
+
+                    <div class="alert alert-success rounded-3" role="alert">
                         Data berhasil ditambahkan.
-                    </p>
+                    </div>
+
                 <?php endif; ?>
 
-                <div class="table-wrapper">
-                    <table class="data-table">
-                        <thead>
+                <!-- TABEL -->
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+
                             <tr>
-                                <th>No</th>
+                                <th class="text-center">No</th>
                                 <th>NIM</th>
                                 <th>Nama</th>
                                 <th>Program Studi</th>
                                 <th>Email</th>
                             </tr>
+
                         </thead>
 
                         <tbody>
+
                             <?php if ($result && $result->num_rows > 0): ?>
+
                                 <?php $no = 1; ?>
 
-                                <?php while (
-                                    $row = $result->fetch_assoc()
-                                ): ?>
+                                <?php while ($row = $result->fetch_assoc()): ?>
+
                                     <tr>
-                                        <td><?= $no++; ?></td>
+
+                                        <td class="text-center">
+                                            <?= $no++; ?>
+                                        </td>
+
                                         <td>
                                             <?= htmlspecialchars($row["nim"]); ?>
                                         </td>
-                                        <td>
+
+                                        <td class="font-semibold text-gray-900">
                                             <?= htmlspecialchars($row["nama"]); ?>
                                         </td>
+
                                         <td>
-                                            <?= htmlspecialchars(
-                                                $row["program_studi"]
-                                            ); ?>
+                                            <?= htmlspecialchars($row["program_studi"]); ?>
                                         </td>
+
                                         <td>
                                             <?= htmlspecialchars($row["email"]); ?>
                                         </td>
+
                                     </tr>
+
                                 <?php endwhile; ?>
 
                             <?php else: ?>
+
                                 <tr>
-                                    <td colspan="5" class="empty-message">
+                                    <td colspan="5" class="text-center text-secondary py-4">
                                         Belum ada data mahasiswa.
                                     </td>
                                 </tr>
+
                             <?php endif; ?>
+
                         </tbody>
+
                     </table>
+
                 </div>
+
             </section>
+
+            <!-- FOOTER -->
+            <footer class="bg-dark text-white text-center rounded-3 p-4 mt-4">
+
+                <p class="mb-1">
+                    &copy; 2026 Muhammad Fauzan
+                </p>
+
+                <p class="text-gray-400 text-sm mb-0">
+                    Web Programming 1
+                </p>
+
+            </footer>
+
         </main>
 
-        <footer class="page-footer">
-            <p>&copy; 2026 Web Programming 1</p>
-        </footer>
-
     </div>
-
 </div>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <?php
 $conn->close();

@@ -2,354 +2,573 @@
 <?php
 require_once "../config/auth.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Profil Muhammad Fauzan</title>
+
+    <title>My Profile | Muhammad Fauzan</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false
+            }
+        }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+<body class="bg-slate-950 text-slate-100">
 
-    body {
-        margin: 0;
-        background-color: #eef1f5;
-        color: #333;
-        font-family: Arial, sans-serif;
-    }
+<div class="container-fluid">
+    <div class="row min-vh-100">
 
-    /* Layout utama */
-    .page-layout {
-        display: grid;
-        grid-template-columns: 240px minmax(0, 1fr);
-        min-height: 100vh;
-    }
+        <!-- SIDEBAR -->
+        <aside class="col-lg-3 col-xl-2 bg-slate-900 text-white p-4 border-end border-secondary">
 
-    /* Sidebar */
-    .sidebar {
-        background-color: #222;
-        color: white;
-        padding: 25px 18px;
-    }
+            <div class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <div class="bg-lime-400 text-black rounded-3 p-2 fw-bold">
+                        FZ
+                    </div>
 
-    .sidebar h2 {
-        font-size: 22px;
-        margin: 0 0 8px;
-        color: white;
-    }
-
-    .sidebar p {
-        font-size: 13px;
-        color: #ccc;
-        margin-bottom: 30px;
-    }
-
-    .sidebar nav {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin: 0;
-        text-align: left;
-    }
-
-    .sidebar nav a {
-        display: block;
-        padding: 12px 15px;
-        margin: 0;
-        color: #eee;
-        background-color: transparent;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: 0.3s;
-    }
-
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-        background-color: #444;
-        color: white;
-    }
-
-    /* Konten utama */
-    .main-content {
-        min-width: 0;
-        padding: 30px;
-    }
-
-    .page-header {
-        margin-bottom: 25px;
-    }
-
-    .page-header h1 {
-        margin: 0 0 8px;
-        color: #333;
-    }
-
-    .content-card {
-        background-color: #fff;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .content-card h2 {
-        color: #333;
-    }
-
-    /* Pesan sukses */
-    .success-message {
-        background-color: #f0f1f3;
-        color: #333;
-        padding: 12px 15px;
-        border-left: 4px solid #333;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
-
-    /* Tabel */
-    .table-wrapper {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .data-table {
-        width: 100%;
-        min-width: 600px;
-        border-collapse: collapse;
-        margin-top: 16px;
-        background-color: #fff;
-    }
-
-    .data-table th,
-    .data-table td {
-        border: 1px solid #ccc;
-        padding: 12px;
-        text-align: left;
-    }
-
-    .data-table th {
-        background-color: #eee;
-        color: #333;
-    }
-
-    .data-table tbody tr {
-        background-color: #fff;
-        transition: background-color 0.2s;
-    }
-
-    .data-table tbody tr:hover {
-        background-color: #f4f5f7;
-    }
-
-    .empty-message {
-        text-align: center;
-        padding: 25px;
-        color: #777;
-    }
-
-    /* Footer */
-    .page-footer {
-        text-align: center;
-        background-color: #222;
-        color: white;
-        padding: 20px;
-        margin-top: 30px;
-        border-radius: 10px;
-    }
-
-    .page-footer p {
-        margin: 5px;
-    }
-
-    /* Responsive HP */
-    @media (max-width: 700px) {
-        .page-layout {
-            grid-template-columns: 1fr;
-        }
-
-        .sidebar {
-            padding: 20px;
-        }
-
-        .sidebar nav {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .main-content {
-            padding: 15px;
-        }
-
-        .content-card {
-            padding: 15px;
-        }
-    }
-</style>
-
-<body>
-
-<div class="page-layout">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <h2>My Dashboard</h2>
-        <p>Web Programming 1</p>
-
-        <nav>
-            <a href="dashboard.php">Dashboard</a>
-            <a href="index.php" class="active">Home / Biodata</a>
-            <a href="layout.php">Layout Lab</a>
-            <a href="data_mahasiswa.php">Data Mahasiswa</a>
-            <a href="form_mahasiswa.php">Tambah Mahasiswa</a>
-             <a href="../crud/index.php">CRUD Mahasiswa</a>
-             <a href="../crud-media/index.php">CRUD Media</a>
-        <a href="../proses/logout.php">Logout</a>
-        </nav>
-    </aside>
-
-    <!-- KONTEN UTAMA -->
-    <div class="main-content">
-
-        <div class="hero">
-            <div class="foto">
-                <img src="../assets/img/PP.png" alt="Foto Muhammad Fauzan">
+                    <div>
+                        <h5 class="fw-bold mb-0">FAUZAN<span class="text-lime-400">.</span></h5>
+                        <small class="text-secondary">Personal Dashboard</small>
+                    </div>
+                </div>
             </div>
 
-            <div class="identitas">
-                <p class="sapaan">HALO, SAYA</p>
-                <h1>Muhammad Fauzan</h1>
-                <h3>Mahasiswa Informatika</h3>
-                <p>
-                    Selamat datang di halaman profil pribadi saya.
-                    Saya sedang belajar teknologi dan pengembangan website.
-                </p>
+            <div class="mb-4">
+                <small class="text-secondary fw-bold tracking-widest">
+                    MENU UTAMA
+                </small>
             </div>
-        </div>
 
-        <main>
+            <nav class="grid grid-cols-2 lg:grid-cols-1 gap-2">
 
-            <section id="profil">
-                <h2>Profil Singkat</h2>
+                <a href="dashboard.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
 
-                <div class="info">
-                    <div class="info-box">
-                        <span>Nama</span>
-                        <strong>Muhammad Fauzan</strong>
-                    </div>
+                <a href="index.php"
+                   class="d-flex align-items-center gap-3 bg-lime-400 text-black no-underline rounded-xl p-3 fw-semibold">
+                    <i class="bi bi-person-circle"></i>
+                    <span>My Profile</span>
+                </a>
 
-                    <div class="info-box">
-                        <span>NIM</span>
-                        <strong>4112755201250059</strong>
-                    </div>
+                <a href="layout.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-columns-gap"></i>
+                    <span>Layout Lab</span>
+                </a>
 
-                    <div class="info-box">
-                        <span>Program Studi</span>
-                        <strong>Informatika</strong>
-                    </div>
+                <a href="data_mahasiswa.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-database"></i>
+                    <span>Data Mahasiswa</span>
+                </a>
 
-                    <div class="info-box">
-                        <span>Fakultas</span>
-                        <strong>FICT</strong>
-                    </div>
+                <a href="form_mahasiswa.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-person-plus"></i>
+                    <span>Tambah Mahasiswa</span>
+                </a>
 
-                    <div class="info-box">
-                        <span>Tempat Lahir</span>
-                        <strong>Bekasi</strong>
-                    </div>
+                <a href="../crud/index.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>CRUD Mahasiswa</span>
+                </a>
 
-                    <div class="info-box">
-                        <span>Tanggal Lahir</span>
-                        <strong>11 Juli 2006</strong>
-                    </div>
+                <a href="../crud-media/index.php"
+                   class="d-flex align-items-center gap-3 text-slate-300 no-underline rounded-xl p-3 hover:bg-slate-800 transition">
+                    <i class="bi bi-images"></i>
+                    <span>CRUD Media</span>
+                </a>
+
+            </nav>
+
+            <div class="mt-5 pt-4 border-top border-secondary">
+                <a href="../proses/logout.php"
+                   class="d-flex align-items-center gap-3 text-red-400 no-underline rounded-xl p-3 hover:bg-red-950 transition">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+            <div class="mt-5 text-secondary text-sm">
+                <p class="mb-1">Personal Space © 2026</p>
+                <p class="mb-0">Built with Bootstrap & Tailwind</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="col-lg-9 col-xl-10 p-3 p-md-4 p-lg-5">
+
+            <!-- HEADER -->
+            <header class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-5">
+
+                <div>
+                    <p class="text-lime-400 fw-semibold mb-1">
+                        PERSONAL SPACE / PROFILE
+                    </p>
+
+                    <h2 class="fw-bold text-white mb-1">
+                        My Profile<span class="text-lime-400">.</span>
+                    </h2>
+
+                    <p class="text-slate-400 mb-0">
+                        Kenalan lebih dekat dengan diri gue.
+                    </p>
                 </div>
+
+                <div class="bg-slate-900 border border-secondary rounded-pill px-4 py-2">
+                    <span class="text-lime-400">●</span>
+                    <span class="text-slate-300 text-sm ms-2">
+                        Informatics Student
+                    </span>
+                </div>
+
+            </header>
+
+
+            <!-- PROFILE HERO -->
+            <section class="bg-slate-900 border border-secondary rounded-4 p-4 p-md-5 mb-4">
+
+                <div class="row align-items-center g-4">
+
+                    <!-- FOTO PROFIL -->
+                    <div class="col-md-4 col-lg-3 text-center">
+
+                        <div class="d-inline-block position-relative">
+
+                            <img
+                                src="../assets/img/PP.png"
+                                alt="Foto Muhammad Fauzan"
+                                class="rounded-circle border border-4 border-success shadow-lg"
+                                style="width: 190px; height: 190px; object-fit: cover;"
+                            >
+
+                            <span class="position-absolute bottom-0 end-0 bg-lime-400 border border-dark rounded-circle"
+                                  style="width: 25px; height: 25px;">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROFILE INFORMATION -->
+                    <div class="col-md-8 col-lg-9">
+
+                        <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2 mb-3">
+                            <i class="bi bi-patch-check-fill me-1"></i>
+                            STUDENT PROFILE
+                        </span>
+
+                        <h1 class="text-white fw-bold display-5 mb-2">
+                            Muhammad Fauzan<span class="text-lime-400">.</span>
+                        </h1>
+
+                        <h5 class="text-slate-300 mb-3">
+                            Informatics Student
+                        </h5>
+
+                        <p class="text-slate-400 leading-relaxed mb-4">
+                            Seorang mahasiswa Informatika yang tertarik dengan
+                            dunia teknologi, web development, dan UI/UX Design.
+                            Terus belajar, mencoba hal baru, dan mengembangkan
+                            kemampuan untuk masa depan.
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+
+                            <span class="bg-slate-800 text-slate-200 rounded-pill px-3 py-2 text-sm">
+                                <i class="bi bi-code-slash text-lime-400 me-1"></i>
+                                Web Development
+                            </span>
+
+                            <span class="bg-slate-800 text-slate-200 rounded-pill px-3 py-2 text-sm">
+                                <i class="bi bi-palette text-lime-400 me-1"></i>
+                                UI/UX Design
+                            </span>
+
+                            <span class="bg-slate-800 text-slate-200 rounded-pill px-3 py-2 text-sm">
+                                <i class="bi bi-mortarboard text-lime-400 me-1"></i>
+                                College Student
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </section>
 
-            <section id="tentang">
-                <h2>Tentang Saya</h2>
-                <p>
-                    Saya adalah mahasiswa Program Studi Informatika yang
-                    memiliki ketertarikan pada dunia teknologi. Saya senang
-                    mempelajari pemrograman, desain antarmuka, dan pembuatan
-                    website.
+
+            <!-- QUICK INFORMATION -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+
+                <div class="bg-slate-900 border border-secondary rounded-4 p-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-lime-400 text-black rounded-3 p-3">
+                            <i class="bi bi-person-vcard fs-4"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-slate-400">NIM</small>
+                            <h6 class="text-white fw-bold mb-0">4112755201250059</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-secondary rounded-4 p-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-lime-400 text-black rounded-3 p-3">
+                            <i class="bi bi-building fs-4"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-slate-400">Fakultas</small>
+                            <h6 class="text-white fw-bold mb-0">FICT</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-secondary rounded-4 p-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-lime-400 text-black rounded-3 p-3">
+                            <i class="bi bi-geo-alt fs-4"></i>
+                        </div>
+
+                        <div>
+                            <small class="text-slate-400">Tempat Lahir</small>
+                            <h6 class="text-white fw-bold mb-0">Bekasi</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- BIODATA & EDUCATION -->
+            <div class="row g-4 mb-4">
+
+                <!-- BIODATA -->
+                <div class="col-lg-5">
+
+                    <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <div class="bg-lime-400 text-black rounded-3 p-2">
+                                <i class="bi bi-person-lines-fill"></i>
+                            </div>
+
+                            <h5 class="text-white fw-bold mb-0">
+                                Personal Information
+                            </h5>
+                        </div>
+
+                        <div class="mb-3">
+                            <small class="text-slate-400 d-block mb-1">Nama Lengkap</small>
+                            <p class="text-white fw-semibold mb-0">Muhammad Fauzan</p>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div class="mb-3">
+                            <small class="text-slate-400 d-block mb-1">NIM</small>
+                            <p class="text-white fw-semibold mb-0">4112755201250059</p>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div class="mb-3">
+                            <small class="text-slate-400 d-block mb-1">Tempat, Tanggal Lahir</small>
+                            <p class="text-white fw-semibold mb-0">Bekasi, 11 Juli 2006</p>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div class="mb-3">
+                            <small class="text-slate-400 d-block mb-1">Fakultas</small>
+                            <p class="text-white fw-semibold mb-0">FICT</p>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div>
+                            <small class="text-slate-400 d-block mb-1">Program Studi</small>
+                            <p class="text-white fw-semibold mb-0">S1 Informatika</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EDUCATION -->
+                <div class="col-lg-7">
+
+                    <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <div class="bg-lime-400 text-black rounded-3 p-2">
+                                <i class="bi bi-mortarboard-fill"></i>
+                            </div>
+
+                            <h5 class="text-white fw-bold mb-0">
+                                Education Journey
+                            </h5>
+                        </div>
+
+                        <div class="border-start border-2 border-success ps-4 ms-2">
+
+                            <div class="position-relative mb-4">
+                                <span class="position-absolute bg-lime-400 rounded-circle"
+                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+                                </span>
+
+                                <small class="text-lime-400 fw-semibold">ELEMENTARY SCHOOL</small>
+                                <h6 class="text-white fw-bold mt-1 mb-1">
+                                    SD Negeri 04 Sukahurip
+                                </h6>
+                                <p class="text-slate-400 text-sm mb-0">
+                                    Pendidikan Sekolah Dasar
+                                </p>
+                            </div>
+
+                            <div class="position-relative mb-4">
+                                <span class="position-absolute bg-lime-400 rounded-circle"
+                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+                                </span>
+
+                                <small class="text-lime-400 fw-semibold">JUNIOR HIGH SCHOOL</small>
+                                <h6 class="text-white fw-bold mt-1 mb-1">
+                                    SMP Negeri 2 Sukatani
+                                </h6>
+                                <p class="text-slate-400 text-sm mb-0">
+                                    Pendidikan Sekolah Menengah Pertama
+                                </p>
+                            </div>
+
+                            <div class="position-relative mb-4">
+                                <span class="position-absolute bg-lime-400 rounded-circle"
+                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+                                </span>
+
+                                <small class="text-lime-400 fw-semibold">VOCATIONAL HIGH SCHOOL</small>
+                                <h6 class="text-white fw-bold mt-1 mb-1">
+                                    SMK Negeri 2 Cikarang Barat
+                                </h6>
+                                <p class="text-slate-400 text-sm mb-0">
+                                    Pendidikan Sekolah Menengah Kejuruan
+                                </p>
+                            </div>
+
+                            <div class="position-relative">
+                                <span class="position-absolute bg-lime-400 rounded-circle"
+                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+                                </span>
+
+                                <small class="text-lime-400 fw-semibold">UNIVERSITY</small>
+                                <h6 class="text-white fw-bold mt-1 mb-1">
+                                    Horizon University Indonesia
+                                </h6>
+                                <p class="text-slate-400 text-sm mb-0">
+                                    S1 Informatika
+                                </p>
+                                <span class="badge bg-success mt-2">Currently Studying</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HOBBIES & SKILLS -->
+            <div class="row g-4 mb-4">
+
+                <!-- HOBBIES -->
+                <div class="col-md-6">
+
+                    <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <div class="bg-lime-400 text-black rounded-3 p-2">
+                                <i class="bi bi-controller"></i>
+                            </div>
+
+                            <h5 class="text-white fw-bold mb-0">
+                                Things I Enjoy
+                            </h5>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+
+                            <div class="bg-slate-800 rounded-3 p-3">
+                                <i class="bi bi-activity text-lime-400 fs-4"></i>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">Running</h6>
+                                <small class="text-slate-400">Stay active</small>
+                            </div>
+
+                            <div class="bg-slate-800 rounded-3 p-3">
+                                <i class="bi bi-music-note-beamed text-lime-400 fs-4"></i>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">Music</h6>
+                                <small class="text-slate-400">Good vibes</small>
+                            </div>
+
+                            <div class="bg-slate-800 rounded-3 p-3">
+                                <i class="bi bi-code-slash text-lime-400 fs-4"></i>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">Coding</h6>
+                                <small class="text-slate-400">Create something</small>
+                            </div>
+
+                            <div class="bg-slate-800 rounded-3 p-3">
+                                <i class="bi bi-controller text-lime-400 fs-4"></i>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">Gaming</h6>
+                                <small class="text-slate-400">Game time</small>
+                            </div>
+
+                            <div class="bg-slate-800 rounded-3 p-3 col-span-2">
+                                <i class="bi bi-play-btn text-lime-400 fs-4"></i>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">Watching Movies</h6>
+                                <small class="text-slate-400">Relax and enjoy</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILLS -->
+                <div class="col-md-6">
+
+                    <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
+
+                        <div class="d-flex align-items-center gap-2 mb-4">
+                            <div class="bg-lime-400 text-black rounded-3 p-2">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+
+                            <h5 class="text-white fw-bold mb-0">
+                                My Skills
+                            </h5>
+                        </div>
+
+                        <p class="text-slate-400 text-sm mb-4">
+                            Beberapa kemampuan yang sedang dan terus gue kembangkan.
+                        </p>
+
+                        <div class="mb-4">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-white fw-semibold">HTML</span>
+                                <span class="text-lime-400 text-sm">Web Development</span>
+                            </div>
+
+                            <div class="progress bg-slate-800" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 75%;"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-white fw-semibold">Microsoft Office</span>
+                                <span class="text-lime-400 text-sm">Productivity</span>
+                            </div>
+
+                            <div class="progress bg-slate-800" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 80%;"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-white fw-semibold">UI/UX Design</span>
+                                <span class="text-lime-400 text-sm">Design</span>
+                            </div>
+
+                            <div class="progress bg-slate-800" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 65%;"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="bg-slate-800 rounded-3 p-3 mt-4">
+                            <p class="text-lime-400 fw-semibold mb-1">
+                                <i class="bi bi-stars me-1"></i>
+                                Keep Learning
+                            </p>
+
+                            <small class="text-slate-400">
+                                Progress is more important than perfection.
+                                Keep building, keep improving.
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="bg-slate-900 border border-secondary rounded-4 p-4 text-center">
+
+                <h5 class="text-white fw-bold mb-2">
+                    That's Me<span class="text-lime-400">.</span>
+                </h5>
+
+                <p class="text-slate-400 text-sm mb-2">
+                    "Dream big, start small, and keep moving forward."
                 </p>
-                <p>
-                    Saat ini saya sedang memperdalam kemampuan HTML dan CSS
-                    sebagai dasar untuk membuat website yang menarik dan
-                    mudah digunakan.
-                </p>
-            </section>
 
-            <section id="pendidikan">
-                <h2>Riwayat Pendidikan</h2>
-
-                <div class="pendidikan">
-                    <div class="pendidikan-item">
-                        <span>01</span>
-                        <div>
-                            <h3>SD Negeri 04 Sukahurip</h3>
-                            <p>Sekolah Dasar</p>
-                        </div>
-                    </div>
-
-                    <div class="pendidikan-item">
-                        <span>02</span>
-                        <div>
-                            <h3>SMP Negeri 2 Sukatani</h3>
-                            <p>Sekolah Menengah Pertama</p>
-                        </div>
-                    </div>
-
-                    <div class="pendidikan-item">
-                        <span>03</span>
-                        <div>
-                            <h3>SMK Negeri 2 Cikarang Barat</h3>
-                            <p>Sekolah Menengah Kejuruan</p>
-                        </div>
-                    </div>
-
-                    <div class="pendidikan-item">
-                        <span>04</span>
-                        <div>
-                            <h3>Horizon University Indonesia</h3>
-                            <p>S1 Informatika</p>
-                        </div>
-                    </div>
+                <div class="border-top border-secondary pt-3 mt-3">
+                    <small class="text-slate-500">
+                        © 2026 Muhammad Fauzan. Designed with Bootstrap 5 & Tailwind CSS.
+                    </small>
                 </div>
-            </section>
 
-            <section id="hobi">
-                <h2>Hal yang Saya Sukai</h2>
-                <div class="list">
-                    <div class="item">🏃‍➡️ Running</div>
-                    <div class="item">🎵 Musik</div>
-                    <div class="item">💻 Coding</div>
-                    <div class="item">🎮 Main Game</div>
-                    <div class="item">📱 Nonton</div>
-                </div>
-            </section>
-
-            <section id="skill">
-                <h2>Kemampuan</h2>
-                <div class="skill-list">
-                    <div class="skill">HTML</div>
-                    <div class="skill">Microsoft Office</div>
-                    <div class="skill">UI/UX Design</div>
-                </div>
-            </section>
+            </footer>
 
         </main>
 
-        <footer>
-            <p>&copy; 2026 Muhammad Fauzan</p>
-            <p>Web Programming 1</p>
-        </footer>
-
     </div>
 </div>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
