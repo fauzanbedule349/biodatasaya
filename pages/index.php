@@ -5,6 +5,7 @@ require_once "../config/auth.php";
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,14 +41,18 @@ require_once "../config/auth.php";
 
             <div class="mb-5">
                 <div class="d-flex align-items-center gap-2 mb-2">
+
                     <div class="bg-lime-400 text-black rounded-3 p-2 fw-bold">
                         FZ
                     </div>
 
                     <div>
-                        <h5 class="fw-bold mb-0">FAUZAN<span class="text-lime-400">.</span></h5>
+                        <h5 class="fw-bold mb-0">
+                            FAUZAN<span class="text-lime-400">.</span>
+                        </h5>
                         <small class="text-secondary">Personal Dashboard</small>
                     </div>
+
                 </div>
             </div>
 
@@ -160,14 +165,16 @@ require_once "../config/auth.php";
                         <div class="d-inline-block position-relative">
 
                             <img
+                                id="fotoMahasiswa"
                                 src="../assets/img/PP.png"
-                                alt="Foto Muhammad Fauzan"
+                                alt="Foto Profil Mahasiswa"
                                 class="rounded-circle border border-4 border-success shadow-lg"
                                 style="width: 190px; height: 190px; object-fit: cover;"
                             >
 
-                            <span class="position-absolute bottom-0 end-0 bg-lime-400 border border-dark rounded-circle"
-                                  style="width: 25px; height: 25px;">
+                            <span
+                                class="position-absolute bottom-0 end-0 bg-lime-400 border border-dark rounded-circle"
+                                style="width: 25px; height: 25px;">
                             </span>
 
                         </div>
@@ -184,11 +191,11 @@ require_once "../config/auth.php";
                         </span>
 
                         <h1 class="text-white fw-bold display-5 mb-2">
-                            Muhammad Fauzan<span class="text-lime-400">.</span>
+                            <span id="namaHero">Memuat nama...</span><span class="text-lime-400">.</span>
                         </h1>
 
-                        <h5 class="text-slate-300 mb-3">
-                            Informatics Student
+                        <h5 class="text-slate-300 mb-3" id="prodiHero">
+                            Memuat program studi...
                         </h5>
 
                         <p class="text-slate-400 leading-relaxed mb-4">
@@ -227,42 +234,57 @@ require_once "../config/auth.php";
             <!-- QUICK INFORMATION -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
 
+                <!-- NIM -->
                 <div class="bg-slate-900 border border-secondary rounded-4 p-4">
                     <div class="d-flex align-items-center gap-3">
+
                         <div class="bg-lime-400 text-black rounded-3 p-3">
                             <i class="bi bi-person-vcard fs-4"></i>
                         </div>
 
                         <div>
                             <small class="text-slate-400">NIM</small>
-                            <h6 class="text-white fw-bold mb-0">4112755201250059</h6>
+                            <h6 class="text-white fw-bold mb-0" id="nimQuick">
+                                Memuat...
+                            </h6>
                         </div>
+
                     </div>
                 </div>
 
+                <!-- PROGRAM STUDI -->
                 <div class="bg-slate-900 border border-secondary rounded-4 p-4">
                     <div class="d-flex align-items-center gap-3">
+
                         <div class="bg-lime-400 text-black rounded-3 p-3">
-                            <i class="bi bi-building fs-4"></i>
+                            <i class="bi bi-mortarboard fs-4"></i>
                         </div>
 
                         <div>
-                            <small class="text-slate-400">Fakultas</small>
-                            <h6 class="text-white fw-bold mb-0">FICT</h6>
+                            <small class="text-slate-400">Program Studi</small>
+                            <h6 class="text-white fw-bold mb-0" id="prodiQuick">
+                                Memuat...
+                            </h6>
                         </div>
+
                     </div>
                 </div>
 
+                <!-- EMAIL -->
                 <div class="bg-slate-900 border border-secondary rounded-4 p-4">
                     <div class="d-flex align-items-center gap-3">
+
                         <div class="bg-lime-400 text-black rounded-3 p-3">
-                            <i class="bi bi-geo-alt fs-4"></i>
+                            <i class="bi bi-envelope fs-4"></i>
                         </div>
 
                         <div>
-                            <small class="text-slate-400">Tempat Lahir</small>
-                            <h6 class="text-white fw-bold mb-0">Bekasi</h6>
+                            <small class="text-slate-400">Email</small>
+                            <h6 class="text-white fw-bold mb-0" id="emailQuick">
+                                Memuat...
+                            </h6>
                         </div>
+
                     </div>
                 </div>
 
@@ -278,6 +300,7 @@ require_once "../config/auth.php";
                     <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
 
                         <div class="d-flex align-items-center gap-2 mb-4">
+
                             <div class="bg-lime-400 text-black rounded-3 p-2">
                                 <i class="bi bi-person-lines-fill"></i>
                             </div>
@@ -285,39 +308,53 @@ require_once "../config/auth.php";
                             <h5 class="text-white fw-bold mb-0">
                                 Personal Information
                             </h5>
+
                         </div>
 
                         <div class="mb-3">
-                            <small class="text-slate-400 d-block mb-1">Nama Lengkap</small>
-                            <p class="text-white fw-semibold mb-0">Muhammad Fauzan</p>
-                        </div>
+                            <small class="text-slate-400 d-block mb-1">
+                                Nama Lengkap
+                            </small>
 
-                        <hr class="border-secondary">
-
-                        <div class="mb-3">
-                            <small class="text-slate-400 d-block mb-1">NIM</small>
-                            <p class="text-white fw-semibold mb-0">4112755201250059</p>
-                        </div>
-
-                        <hr class="border-secondary">
-
-                        <div class="mb-3">
-                            <small class="text-slate-400 d-block mb-1">Tempat, Tanggal Lahir</small>
-                            <p class="text-white fw-semibold mb-0">Bekasi, 11 Juli 2006</p>
+                            <p class="text-white fw-semibold mb-0" id="namaDetail">
+                                Memuat...
+                            </p>
                         </div>
 
                         <hr class="border-secondary">
 
                         <div class="mb-3">
-                            <small class="text-slate-400 d-block mb-1">Fakultas</small>
-                            <p class="text-white fw-semibold mb-0">FICT</p>
+                            <small class="text-slate-400 d-block mb-1">
+                                NIM
+                            </small>
+
+                            <p class="text-white fw-semibold mb-0" id="nimDetail">
+                                Memuat...
+                            </p>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div class="mb-3">
+                            <small class="text-slate-400 d-block mb-1">
+                                Program Studi
+                            </small>
+
+                            <p class="text-white fw-semibold mb-0" id="prodiDetail">
+                                Memuat...
+                            </p>
                         </div>
 
                         <hr class="border-secondary">
 
                         <div>
-                            <small class="text-slate-400 d-block mb-1">Program Studi</small>
-                            <p class="text-white fw-semibold mb-0">S1 Informatika</p>
+                            <small class="text-slate-400 d-block mb-1">
+                                Email
+                            </small>
+
+                            <p class="text-white fw-semibold mb-0" id="emailDetail">
+                                Memuat...
+                            </p>
                         </div>
 
                     </div>
@@ -331,6 +368,7 @@ require_once "../config/auth.php";
                     <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
 
                         <div class="d-flex align-items-center gap-2 mb-4">
+
                             <div class="bg-lime-400 text-black rounded-3 p-2">
                                 <i class="bi bi-mortarboard-fill"></i>
                             </div>
@@ -338,65 +376,97 @@ require_once "../config/auth.php";
                             <h5 class="text-white fw-bold mb-0">
                                 Education Journey
                             </h5>
+
                         </div>
 
                         <div class="border-start border-2 border-success ps-4 ms-2">
 
                             <div class="position-relative mb-4">
-                                <span class="position-absolute bg-lime-400 rounded-circle"
-                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+
+                                <span
+                                    class="position-absolute bg-lime-400 rounded-circle"
+                                    style="width: 13px; height: 13px; left: -31px; top: 5px;">
                                 </span>
 
-                                <small class="text-lime-400 fw-semibold">ELEMENTARY SCHOOL</small>
+                                <small class="text-lime-400 fw-semibold">
+                                    ELEMENTARY SCHOOL
+                                </small>
+
                                 <h6 class="text-white fw-bold mt-1 mb-1">
                                     SD Negeri 04 Sukahurip
                                 </h6>
+
                                 <p class="text-slate-400 text-sm mb-0">
                                     Pendidikan Sekolah Dasar
                                 </p>
+
                             </div>
 
                             <div class="position-relative mb-4">
-                                <span class="position-absolute bg-lime-400 rounded-circle"
-                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+
+                                <span
+                                    class="position-absolute bg-lime-400 rounded-circle"
+                                    style="width: 13px; height: 13px; left: -31px; top: 5px;">
                                 </span>
 
-                                <small class="text-lime-400 fw-semibold">JUNIOR HIGH SCHOOL</small>
+                                <small class="text-lime-400 fw-semibold">
+                                    JUNIOR HIGH SCHOOL
+                                </small>
+
                                 <h6 class="text-white fw-bold mt-1 mb-1">
                                     SMP Negeri 2 Sukatani
                                 </h6>
+
                                 <p class="text-slate-400 text-sm mb-0">
                                     Pendidikan Sekolah Menengah Pertama
                                 </p>
+
                             </div>
 
                             <div class="position-relative mb-4">
-                                <span class="position-absolute bg-lime-400 rounded-circle"
-                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+
+                                <span
+                                    class="position-absolute bg-lime-400 rounded-circle"
+                                    style="width: 13px; height: 13px; left: -31px; top: 5px;">
                                 </span>
 
-                                <small class="text-lime-400 fw-semibold">VOCATIONAL HIGH SCHOOL</small>
+                                <small class="text-lime-400 fw-semibold">
+                                    VOCATIONAL HIGH SCHOOL
+                                </small>
+
                                 <h6 class="text-white fw-bold mt-1 mb-1">
                                     SMK Negeri 2 Cikarang Barat
                                 </h6>
+
                                 <p class="text-slate-400 text-sm mb-0">
                                     Pendidikan Sekolah Menengah Kejuruan
                                 </p>
+
                             </div>
 
                             <div class="position-relative">
-                                <span class="position-absolute bg-lime-400 rounded-circle"
-                                      style="width: 13px; height: 13px; left: -31px; top: 5px;">
+
+                                <span
+                                    class="position-absolute bg-lime-400 rounded-circle"
+                                    style="width: 13px; height: 13px; left: -31px; top: 5px;">
                                 </span>
 
-                                <small class="text-lime-400 fw-semibold">UNIVERSITY</small>
+                                <small class="text-lime-400 fw-semibold">
+                                    UNIVERSITY
+                                </small>
+
                                 <h6 class="text-white fw-bold mt-1 mb-1">
                                     Horizon University Indonesia
                                 </h6>
+
                                 <p class="text-slate-400 text-sm mb-0">
                                     S1 Informatika
                                 </p>
-                                <span class="badge bg-success mt-2">Currently Studying</span>
+
+                                <span class="badge bg-success mt-2">
+                                    Currently Studying
+                                </span>
+
                             </div>
 
                         </div>
@@ -417,6 +487,7 @@ require_once "../config/auth.php";
                     <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
 
                         <div class="d-flex align-items-center gap-2 mb-4">
+
                             <div class="bg-lime-400 text-black rounded-3 p-2">
                                 <i class="bi bi-controller"></i>
                             </div>
@@ -424,38 +495,59 @@ require_once "../config/auth.php";
                             <h5 class="text-white fw-bold mb-0">
                                 Things I Enjoy
                             </h5>
+
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
 
                             <div class="bg-slate-800 rounded-3 p-3">
                                 <i class="bi bi-activity text-lime-400 fs-4"></i>
-                                <h6 class="text-white fw-semibold mt-2 mb-1">Running</h6>
-                                <small class="text-slate-400">Stay active</small>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">
+                                    Running
+                                </h6>
+                                <small class="text-slate-400">
+                                    Stay active
+                                </small>
                             </div>
 
                             <div class="bg-slate-800 rounded-3 p-3">
                                 <i class="bi bi-music-note-beamed text-lime-400 fs-4"></i>
-                                <h6 class="text-white fw-semibold mt-2 mb-1">Music</h6>
-                                <small class="text-slate-400">Good vibes</small>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">
+                                    Music
+                                </h6>
+                                <small class="text-slate-400">
+                                    Good vibes
+                                </small>
                             </div>
 
                             <div class="bg-slate-800 rounded-3 p-3">
                                 <i class="bi bi-code-slash text-lime-400 fs-4"></i>
-                                <h6 class="text-white fw-semibold mt-2 mb-1">Coding</h6>
-                                <small class="text-slate-400">Create something</small>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">
+                                    Coding
+                                </h6>
+                                <small class="text-slate-400">
+                                    Create something
+                                </small>
                             </div>
 
                             <div class="bg-slate-800 rounded-3 p-3">
                                 <i class="bi bi-controller text-lime-400 fs-4"></i>
-                                <h6 class="text-white fw-semibold mt-2 mb-1">Gaming</h6>
-                                <small class="text-slate-400">Game time</small>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">
+                                    Gaming
+                                </h6>
+                                <small class="text-slate-400">
+                                    Game time
+                                </small>
                             </div>
 
                             <div class="bg-slate-800 rounded-3 p-3 col-span-2">
                                 <i class="bi bi-play-btn text-lime-400 fs-4"></i>
-                                <h6 class="text-white fw-semibold mt-2 mb-1">Watching Movies</h6>
-                                <small class="text-slate-400">Relax and enjoy</small>
+                                <h6 class="text-white fw-semibold mt-2 mb-1">
+                                    Watching Movies
+                                </h6>
+                                <small class="text-slate-400">
+                                    Relax and enjoy
+                                </small>
                             </div>
 
                         </div>
@@ -471,6 +563,7 @@ require_once "../config/auth.php";
                     <div class="bg-slate-900 border border-secondary rounded-4 p-4 h-100">
 
                         <div class="d-flex align-items-center gap-2 mb-4">
+
                             <div class="bg-lime-400 text-black rounded-3 p-2">
                                 <i class="bi bi-lightning-charge-fill"></i>
                             </div>
@@ -478,6 +571,7 @@ require_once "../config/auth.php";
                             <h5 class="text-white fw-bold mb-0">
                                 My Skills
                             </h5>
+
                         </div>
 
                         <p class="text-slate-400 text-sm mb-4">
@@ -524,6 +618,7 @@ require_once "../config/auth.php";
                         </div>
 
                         <div class="bg-slate-800 rounded-3 p-3 mt-4">
+
                             <p class="text-lime-400 fw-semibold mb-1">
                                 <i class="bi bi-stars me-1"></i>
                                 Keep Learning
@@ -533,6 +628,7 @@ require_once "../config/auth.php";
                                 Progress is more important than perfection.
                                 Keep building, keep improving.
                             </small>
+
                         </div>
 
                     </div>
@@ -569,6 +665,90 @@ require_once "../config/auth.php";
 
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- AJAX FETCH API -->
+<script>
+
+async function loadBiodata() {
+
+    try {
+
+        // Meminta data dari API PHP
+        const response = await fetch("../api/biodata.php");
+
+        // Mengubah respons menjadi JSON
+        const result = await response.json();
+
+        // Memeriksa respons API
+        if (!response.ok || !result.status) {
+            throw new Error(result.message || "Gagal mengambil biodata");
+        }
+
+        // Menampung data mahasiswa
+        const mahasiswa = result.data;
+
+
+        // PROFILE HERO
+        document.getElementById("namaHero").textContent =
+            mahasiswa.nama;
+
+        document.getElementById("prodiHero").textContent =
+            mahasiswa.program_studi;
+
+
+        // QUICK INFORMATION
+        document.getElementById("nimQuick").textContent =
+            mahasiswa.nim;
+
+        document.getElementById("prodiQuick").textContent =
+            mahasiswa.program_studi;
+
+        document.getElementById("emailQuick").textContent =
+            mahasiswa.email;
+
+
+        // PERSONAL INFORMATION
+        document.getElementById("namaDetail").textContent =
+            mahasiswa.nama;
+
+        document.getElementById("nimDetail").textContent =
+            mahasiswa.nim;
+
+        document.getElementById("prodiDetail").textContent =
+            mahasiswa.program_studi;
+
+        document.getElementById("emailDetail").textContent =
+            mahasiswa.email;
+
+
+        // FOTO PROFIL
+        if (mahasiswa.foto) {
+
+            document.getElementById("fotoMahasiswa").src =
+                mahasiswa.foto;
+
+        }
+
+    } catch (error) {
+
+        console.error("Error mengambil biodata:", error);
+
+        document.getElementById("namaHero").textContent =
+            "Gagal memuat biodata";
+
+        document.getElementById("prodiHero").textContent =
+            "Silakan periksa koneksi API.";
+
+    }
+
+}
+
+
+// Menjalankan AJAX setelah halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", loadBiodata);
+
+</script>
 
 </body>
 </html>
